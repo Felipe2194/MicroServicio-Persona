@@ -4,6 +4,6 @@ import { Controller, Get } from '@nestjs/common';
 export class PersonsController {
     @Get()
     test() {
-        return 'Hello from persons controller';
+        return 'Hello from persons controller'; //http://localhost:3000/persons para probar que funcione
     }
 }
