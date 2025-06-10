@@ -1,6 +1,6 @@
 export class createPerson {
     name: string;
     email: string;
-    birthdate: Date;
+    birthDate: Date;
     cityId: number;
 }

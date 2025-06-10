@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
 import { createPerson } from './createPerson';
+import e from 'express';
 
 
 @Controller('persons')
@@ -11,8 +12,10 @@ export class PersonsController {
     @Post()
     create(@Body() createPerson: createPerson) {
         return {
-            message: 'PERSONA CREADA CON EXITO',
-            data: createPerson
+            name: createPerson.name,
+            email: createPerson.email,
+            birthDate: createPerson.birthDate,
+            cityId: createPerson.cityId,
         }
     }
     @Put()
