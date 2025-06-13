@@ -4,7 +4,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PersonsModule } from './entities/persons/persons.module';
 import { CityModule } from './entities/city/city.module';
-import { ProvincesModule } from './entities/provinces/provinces.module'; // ¡Esta línea!
+import { ProvinceModule } from './entities/province/province.module'; // ¡CORREGIDO A SINGULAR y ruta singular!
+import { AuthModule } from './auth/auth.module'; // ¡Importa tu AuthModule aquí!
+// import { UsersModule } from './users/users.module'; // Si aún no lo usas o no existe, déjalo comentado.
 
 @Module({
   imports: [
@@ -14,13 +16,15 @@ import { ProvincesModule } from './entities/provinces/provinces.module'; // ¡Es
       port: 3306, // O el puerto de tu servidor de DB
       username: 'root', // Tu usuario de base de datos
       password: '', // Tu contraseña de base de datos
-      database: 'your_database_name', // <-- ¡MUY IMPORTANTE: CAMBIA ESTO!
+      database: 'your_database_name', // <-- ¡MUY IMPORTANTE: CAMBIA ESTO AL NOMBRE REAL DE TU DB!
       entities: [__dirname + '/**/*.entity{.ts,.js}'], // Busca automáticamente todas las entidades
       synchronize: true, // ¡SOLO PARA DESARROLLO! CUIDADO EN PRODUCCIÓN.
     }),
     PersonsModule,
     CityModule,
-    ProvincesModule, // ¡Y esta línea en el array!
+    ProvinceModule, // <<-- ¡CORREGIDO EL NOMBRE AQUÍ DENTRO DEL ARRAY DE IMPORTS!
+    AuthModule,     // <<-- Módulo de autenticación (ahora fusionado correctamente)
+    // UsersModule, // Si lo necesitas y existe, descomenta aquí.
   ],
   controllers: [AppController],
   providers: [AppService],
