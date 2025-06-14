@@ -10,5 +10,6 @@ export class City {
   name: string;
 
   @ManyToOne(() => Province, province => province.cities, { eager: true })
+  @JoinColumn({ name: 'provinceId' })
   province: Province;
 }
