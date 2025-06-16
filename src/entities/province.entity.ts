@@ -15,11 +15,14 @@ export class Province {
   id: number;
 
   @Column()
-  nombre: string;
-
-  @ManyToOne(() => Country, (country) => country.provincias)
+  name: string;
+  //hace la relacion de cada ciudad con su provincia
+  @ManyToOne(() => Country, (country) => country.provinces)
   @JoinColumn({ name: 'countryId' })
-  pais: Country;
-  @OneToMany(() => City, (city) => city.provincia)
-  ciudades: City[];
+  country: Country;
+  //hace la relacion de cada provincia con sus ciudades
+  @Column()
+  countryId: number;
+  @OneToMany(() => City, (city) => city.province)
+  citis: City[];
 }

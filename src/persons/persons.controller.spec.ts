@@ -12,8 +12,7 @@ describe('PersonController', () => {
         {
           provide: PersonService,
           useValue: {
-            create: jest.fn(), // Mock del método create
-            // Agregá más métodos mockeados si usás otros
+            create: jest.fn(),
           },
         },
       ],

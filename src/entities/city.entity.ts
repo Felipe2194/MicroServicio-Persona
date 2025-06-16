@@ -15,12 +15,13 @@ export class City {
   id: number;
 
   @Column()
-  nombre: string;
+  name: string;
 
   @ManyToOne(() => Province, (provincia) => provincia.ciudades)
   @JoinColumn({ name: 'provinceId' })
-  provincia: Province;
-
+  province: Province;
+  @Column()
+  provinceId: number; // La columna de la clave foránea
   @OneToMany(() => Persons, (person) => person.city)
   persons: Persons[];
 }

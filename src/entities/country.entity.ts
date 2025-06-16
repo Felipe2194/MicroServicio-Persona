@@ -7,8 +7,8 @@ export class Country {
   id: number;
 
   @Column({ unique: true })
-  nombre: string;
+  name: string;
 
-  @OneToMany(() => Province, (province) => province.pais)
-  provincias: Province[];
+  @OneToMany(() => Province, (province) => province.country)
+  provinces: Province[];
 }
