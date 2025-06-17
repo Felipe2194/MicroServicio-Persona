@@ -1,10 +1,20 @@
 import { Injectable } from '@nestjs/common';
+import { UpdateCountry } from './updateCountry';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Country } from './country.entity';
+
 
 @Injectable()
 export class CountryService {
+    constructor(
+        @InjectRepository(Country)
+        private countryRepository: Repository<Country>,
+    ) { }
+
     // GET /countries
-  async getAll() {
-    return await this.getAll();
+    async getAll() {
+        return await this.getAll();
     }
     // GET /countries/:id
     async findOne(id: number) {
@@ -13,26 +23,29 @@ export class CountryService {
         };
     }
     // POST /countries
-    async create(createCountry: { id: number, name: string }) {
+    async create(createCountry: { name: string }) {
         return {
-            id: createCountry.id,
             name: createCountry.name
         }
     }
     // PUT /countries/:id
-    async update(id: number, updateCountry: { id: number, name: string }) {
+    async update(id: number, updateCountry: { name: string }) {
         return {
-            id: updateCountry.id,
+            id: id,
             name: updateCountry.name
         }
     }
     // PATCH /countries/:id
-  async partialUpdate(id: number, partialUpdate: { id: number; name: string }) {
+    async partialUpdate(id: number, UpdateCountry: { name?: string }) {
         return {
-            id: partialUpdate.id,
-      name: partialUpdate.name,
+            id: id,
+            name: UpdateCountry.name
         }
     }
     // DELETE /countries/:id
-  async delete(id: number) {}
+    async delete(id: number) {
+        await this.countryRepository.delete(id);
+        return { message: `Country id: ${id} deleted` };
+    }
+
 }
