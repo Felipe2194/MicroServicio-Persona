@@ -45,4 +45,4 @@ import { RolesModule } from './roles/roles.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
