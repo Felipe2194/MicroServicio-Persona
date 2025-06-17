@@ -26,7 +26,7 @@ export class UsersService {
     @InjectRepository(RoleEntity)
     private readonly roleRepository: Repository<RoleEntity>, // Renombrado a roleRepository
     private jwtService: JwtService,
-  ) {}
+  ) { }
 
   async createUser(body: RegisterDTO): Promise<{ status: string }> {
     try {
@@ -201,7 +201,7 @@ export class UsersService {
     return await this.userRepository.save(user);
   }
 
-  async login(body: registerDTO) {
+  async login(body: RegisterDTO) {
     const user = await this.findByEmail(body.email);
     if (!user) {
       throw new UnauthorizedException('Credenciales inválidas.'); // Añadir mensaje
