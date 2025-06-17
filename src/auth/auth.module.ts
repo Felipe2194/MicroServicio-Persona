@@ -1,9 +1,9 @@
 // src/auth/auth.module.ts
-// Este módulo ayuda a organizar los componentes de autenticación.
 import { Module } from '@nestjs/common';
+import { PermissionsGuard } from './guards/permissions.guard'; // <<-- Importa tu PermissionsGuard
 
 @Module({
-  providers: [], // No necesitamos proveedores específicos aquí por ahora
-  exports: [],
+  providers: [PermissionsGuard], // <<-- Declara PermissionsGuard como un proveedor aquí
+  exports: [PermissionsGuard],   // <<-- Exporta PermissionsGuard para que otros módulos puedan usarlo
 })
 export class AuthModule {}
