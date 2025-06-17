@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // src/users/users.controller.ts (Ejemplo)
 import { Controller, Get, UseGuards } from '@nestjs/common';
 import { PermissionsGuard } from '../auth/guards/permissions.guard'; // Ruta correcta ahora
@@ -29,3 +30,9 @@ export class UsersController {
     return { message: 'Estos son datos sensibles del panel de control.' };
   }
 }
+=======
+import { Controller } from '@nestjs/common';
+
+@Controller('users')
+export class UsersController {}
+>>>>>>> 0877bf30d4454e864a571047ebb863013b745828
