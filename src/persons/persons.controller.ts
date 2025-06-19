@@ -87,8 +87,8 @@ export class PersonController {
           id: updated.city.province.id,
           name: updated.city.province.name,
           country: {
-            id: updated.city.province.pais.id,
-            name: updated.city.province.pais.name,
+            id: updated.city.province.country.id,
+            name: updated.city.province.country.name,
           },
         },
       },

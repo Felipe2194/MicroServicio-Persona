@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
-import { Country } from '../countries/country.entity'; // Asegurate que esta ruta sea correcta para tu entidad Country
+import { Country } from 'src/country/country.entity'; // Asegurate que esta ruta sea correcta para tu entidad Country
 
 @Entity('province') // <<-- ¡CORREGIDO: Nombre de la tabla en la base de datos a singular!
 export class Province {

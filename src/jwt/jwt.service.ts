@@ -15,8 +15,8 @@ export class JwtService {
     type: 'refresh' | 'auth' = 'auth',
   ): string {
     console.log(payload, this.config[type].expiresIn);
-    return sign(payload, this.config[type].secret, {
-      expiresIn: this.config[type].expiresIn,
+  return sign(payload, String(this.config[type].secret), {
+    expiresIn: '1h',
     });
   }
 
@@ -27,6 +27,9 @@ export class JwtService {
         this.config.refresh.secret,
       ) as Payload;
       const currentTime = Math.floor(Date.now() / 1000);
+      if (typeof payload.exp !== 'number') {
+        throw new UnauthorizedException('El token de refresco no tiene fecha de expiración.');
+      }
       const timeToExpire = (payload.exp - currentTime) / 60;
       if (timeToExpire < 20) {
         return {

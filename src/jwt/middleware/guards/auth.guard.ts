@@ -2,6 +2,7 @@
 import { Injectable, CanActivate, ExecutionContext, UnauthorizedException, Logger } from '@nestjs/common';
 import * as jwt from 'jsonwebtoken'; // Importamos la librería jsonwebtoken
 import { Request } from 'express'; // Importamos Request para tipar correctamente
+import { AuthRequest } from 'src/interfaces/auth-request.interface';
 
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
@@ -41,7 +42,9 @@ export class JwtAuthGuard implements CanActivate {
                 // ... cualquier otra información que quieras del token
             };
 
-            this.logger.log(`Token JWT verificado exitosamente para el usuario: ${request['user'].username}`);
+            const req = request as AuthRequest;
+            this.logger.log(`Token JWT verificado exitosamente para el usuario: ${req.user.email}`);
+
             return true; // Token válido, permite el acceso
         } catch (err) {
             if (err instanceof jwt.TokenExpiredError) {

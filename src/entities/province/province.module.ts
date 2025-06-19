@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProvinceService } from './province.service';     // <<-- ¡CORREGIDO a singular!
 import { ProvinceController } from './province.controller'; // <<-- ¡CORREGIDO a singular!
 import { Province } from './province.entity';
-import { Country } from '../countries/country.entity'; // Esta ruta ya la hemos validado, es correcta
+import { Country } from 'src/country/country.entity'; // Esta ruta ya la hemos validado, es correcta
 
 @Module({
   imports: [

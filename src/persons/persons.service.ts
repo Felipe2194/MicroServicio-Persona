@@ -44,9 +44,9 @@ export class PersonService {
     const options: FindManyOptions<Persons> = {
       relations: {
         city: {
-          provincia: {
+          province: {
             // <-- NOTA: Asumiendo que la propiedad en City.entity.ts es 'province'
-            pais: true, // <-- NOTA: Asumiendo que la propiedad en Provincia.entity.ts es 'country'
+            country: true, // <-- NOTA: Asumiendo que la propiedad en Provincia.entity.ts es 'country'
           },
         },
       },
@@ -65,9 +65,9 @@ export class PersonService {
       relations: {
         // Carga las relaciones anidadas aquí
         city: {
-          provincia: {
+          province: {
             // Propiedad 'provincia' en la entidad City
-            ciudades: true, // Propiedad 'country' en la entidad Provincia
+            citis: true, // Propiedad 'country' en la entidad Provincia
           },
         },
       },
@@ -77,7 +77,7 @@ export class PersonService {
   async update(id: number, changes: UpdatePersonDto): Promise<Persons> {
     const person = await this.personRepo.findOne({
       where: { id: id },
-      relations: { city: { provincia: { pais: true } } },
+      relations: { city: { province: { country: true } } },
     });
 
     if (!person) {
@@ -88,7 +88,7 @@ export class PersonService {
     if (changes.cityId) {
       city = await this.cityRepo.findOne({
         where: { id: changes.cityId },
-        relations: { provincia: { pais: true } },
+        relations: { province: { country: true } },
       });
       if (!city) {
         throw new NotFoundException(
@@ -106,7 +106,7 @@ export class PersonService {
 
     return (await this.personRepo.findOne({
       where: { id: updatedPerson.id },
-      relations: { city: { provincia: { pais: true } } },
+      relations: { city: { province: { country: true } } },
     })) as Persons;
   }
   //metodo que realiza el PATCH

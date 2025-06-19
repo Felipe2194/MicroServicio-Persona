@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { Province } from './province.entity';
 import { CreateProvinceDto } from './dto/create-province.dto';
 import { UpdateProvinceDto } from './dto/update-province.dto';
-import { Country } from '../countries/country.entity'; // Asegúrate que esta ruta sea correcta para tu entidad Country
+import { Country } from 'src/country/country.entity'; // Asegúrate que esta ruta sea correcta para tu entidad Country
 
 @Injectable()
 export class ProvinceService { // <<-- ¡CORREGIDO: Clase del servicio en singular!

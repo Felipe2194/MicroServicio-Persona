@@ -17,7 +17,7 @@ export class City {
   @Column()
   name: string;
 
-  @ManyToOne(() => Province, (provincia) => provincia.ciudades)
+  @ManyToOne(() => Province, (provincia) => provincia.citis)
   @JoinColumn({ name: 'provinceId' })
   province: Province;
   @Column()

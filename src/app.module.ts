@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PersonsModule } from './entities/persons/persons.module';
+import { PersonModule } from 'src/persons/persons.module';
 import { CityModule } from './entities/city/city.module';
 import { ProvinceModule } from './entities/province/province.module'; // ¡CORREGIDO A SINGULAR y ruta singular!
 import { AuthModule } from './auth/auth.module'; // ¡Importa tu AuthModule aquí!
@@ -20,7 +20,7 @@ import { AuthModule } from './auth/auth.module'; // ¡Importa tu AuthModule aqu�
       entities: [__dirname + '/**/*.entity{.ts,.js}'], // Busca automáticamente todas las entidades
       synchronize: true, // ¡SOLO PARA DESARROLLO! CUIDADO EN PRODUCCIÓN.
     }),
-    PersonsModule,
+    PersonModule,
     CityModule,
     ProvinceModule, // <<-- ¡CORREGIDO EL NOMBRE AQUÍ DENTRO DEL ARRAY DE IMPORTS!
     AuthModule,     // <<-- Módulo de autenticación (ahora fusionado correctamente)
